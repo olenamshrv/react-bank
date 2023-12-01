@@ -1,0 +1,95 @@
+$colorMap: (
+    dark: #1e1e1e,
+    purple-main: #775ce5,
+    grey-text: #939199,
+    dark-text: #1d1d1f,
+    red-light: #f23152,
+    grey-border: #e9e8eb,
+);
+
+@function color ($key) {
+    @return map-get($colorMap, $key);
+}
+
+@function space ($num) {
+	@return $num * 4px;
+}
+
+@mixin click {
+	cursor: pointer;
+	transition: opacity 0.7s;
+
+	&:hover {
+		opacity: 0.5;
+	}
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.field {
+    &__wrapper {
+        display: grid;
+        width: 100%;
+        position: relative;
+    }
+
+    &__icon {
+        @include click;
+
+        display: block;
+        width: 24px;
+        height: 16px;
+
+        background-image: url('../../../public/svg/password/password-show.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+
+        position: absolute;
+        top: calc( 50% - 8px);
+        right: space(4);
+
+        &--hidden {
+            background-image: url('../../../public/svg/password/password-hide.svg');
+        }
+
+        &--error-show {
+            background-image: url('../../../public/svg/password/password-show-error.svg');
+        }
+
+        &--error-hide {
+            background-image: url('../../../public/svg/password/password-hide-error.svg');
+        }
+    }
+
+    &--error {
+        color: color(red-light);
+
+        input {
+            border-color: color(red-light);
+            
+            &::placeholder {
+                color: color(red-light);
+            }
+        }
+    }
+
+    &__error {
+        display: none;
+
+        &--active {
+            display: block;
+            color: color(red-light);
+        }
+    }
+}
+
+.link__prefix {
+    font-size: 14px;
+}
+
+.link {
+    color: color(purple-main);
+    font-size: 14px;
+}

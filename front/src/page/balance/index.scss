@@ -1,0 +1,116 @@
+$colorMap: (
+  dark: #1e1e1e,
+  purple-main: #775ce5,
+  grey-text: #939199,
+  dark-text: #1d1d1f,
+  red-light: #f23152,
+  grey-border: #e9e8eb,
+  danger-text: #f2883d,
+  success-text: #449b34,
+  success-background: #e2ffde,
+  progress-text: #213c73,
+  progress-background: #cbdaff,
+  background-blue: #5b94e9,
+  white-top-text: #f3f5ff,
+);
+
+@function color ($key) {
+    @return map-get($colorMap, $key);
+}
+
+@function space ($num) {
+	@return $num * 4px;
+}
+
+.page-balance {
+    padding-bottom: 34px; 
+    position: relative; 
+}
+
+.border-balance {
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+
+    background: linear-gradient(105deg, #68E2DE 0%, #492CBB 100%);
+}
+
+.header-balance {
+    padding: space(14) space(5) 0 space(5);
+    height: 203px;
+     
+    background-image: url("../../../public//svg/bg_balance.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center center;
+
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: space(5);
+}
+
+.header__actions {
+    display: flex;
+    justify-content: center;
+    gap: space(3);
+
+    margin: 0;
+    border: 0;
+
+    position: absolute;
+    left: calc( 50% - 78px );
+    top: calc( 203px - 36px );
+}
+
+.header__icon {
+    width: 25px;
+    height: 25px;
+}
+
+.top__text {
+    color: color(white-top-text);
+    font-size: 16px;
+}
+
+.main-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: space(2);
+
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.text--light {
+    font-weight: 400;
+}
+
+.transaction-list {
+    margin-top: space(22);
+    padding-left: space(5);
+    padding-right: space(5);
+
+    color: black;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: space(4);
+    }
+}
+
+.item__link {
+    text-decoration: none;
+
+    transition: opacity 0.7s;
+
+    &:hover {
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,68 @@
+$colorMap: (
+    dark: #1e1e1e,
+    purple-main: #775ce5,
+    grey-text: #939199,
+    dark-text: #1d1d1f,
+    red-light: #f23152,
+    grey-border: #e9e8eb,
+    danger-text: #f2883d,
+    success-text: #449b34,
+    success-background: #e2ffde,
+    progress-text: #213c73,
+    progress-background: #cbdaff,
+    white-top-text: #f3f5ff,
+    green-main: #24b277,
+    green-secondary: #26bf80,
+);
+
+@function color ($key) {
+    @return map-get($colorMap, $key);
+}
+
+@function space ($num) {
+	@return $num * 4px;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    padding: space(4);
+    background: white;
+    border-radius: 12px;
+    gap: space(3);
+
+    &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: space(3);
+    }
+
+    &__icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: space(2);
+    }
+
+    &__heading {
+        color: color(dark-text);
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    &__bottom {
+        color: color(grey-text);
+        font-size: 12px;
+
+        display: flex;
+        align-items: center;
+        gap: space(1);
+    }
+}
+

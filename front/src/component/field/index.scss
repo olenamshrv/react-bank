@@ -1,0 +1,46 @@
+$colorMap: (
+    dark: #1e1e1e,
+    purple-main: #775ce5,
+    grey-text: #939199,
+    dark-text: #1d1d1f,
+    red-light: #f23152,
+    grey-border: #e9e8eb,
+);
+
+@function color ($key) {
+    @return map-get($colorMap, $key);
+}
+
+@function space ($num) {
+	@return $num * 4px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: space(2);
+    background-color: white;
+
+    &__label {
+        &--error {
+            color: color(red-light);
+        }
+    }
+
+    &__input {
+        border: 1px solid color(grey-border);
+        border-radius: 12px;
+
+        padding: space(5) space(4);
+
+        &:focus {
+            border: 1px solid color(purple-main);
+        }
+    }
+}
+
+input:-webkit-autofill,
+input:-internal-autofill-selected {
+    background-color: white !important;
+    -webkit-box-shadow: 0 0 0 30px white inset; 
+}

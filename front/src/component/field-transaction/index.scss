@@ -1,0 +1,69 @@
+$colorMap: (
+    dark: #1e1e1e,
+    purple-main: #775ce5,
+    grey-text: #939199,
+    dark-text: #1d1d1f,
+    red-light: #f23152,
+    grey-border: #e9e8eb,
+);
+
+@function color ($key) {
+    @return map-get($colorMap, $key);
+}
+
+@function space ($num) {
+	@return $num * 4px;
+}
+
+.field-transaction {
+    &__label {
+        color: black;
+        font-size: 16px;
+        font-weight: bold;
+
+        &--small {
+            font-size: 14px;
+            color: color(dark-text);
+        }
+
+        &--error {
+            color: color(red-light);
+        }
+    }
+
+    &__input {
+        border: 1px solid color(grey-border);
+        border-radius: 12px;
+
+        padding: space(5) space(4);
+
+        &:focus {
+            border: 1px solid color(purple-main);
+        }
+
+        &::placeholder {
+            color: color(grey-text);
+        }
+    }
+}
+
+.validation {
+    color: color(dark-text);
+  
+    &:-webkit-autofill {
+      -webkit-text-fill-color: color(dark-text);
+    }
+  
+    &--active {
+      border-color: color(red-light) !important;
+      color: color(red-light);
+    
+      &::placeholder {
+        color: color(red-light);
+      }
+  
+      &:-webkit-autofill {
+        -webkit-text-fill-color: color(red-light);
+      }
+    }
+  }
